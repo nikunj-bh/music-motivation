@@ -1,38 +1,16 @@
-#prev-song, #next-song, #play-pause {
-  position: absolute;
-  bottom: 20px;
-  padding: 15px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  background: linear-gradient(45deg, #ff0055, #ff55aa);
-  box-shadow: 0 0 20px #ff0055;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  z-index: 10;
+/* ---------- GLOBAL ---------- */
+* {
+  box-sizing: border-box;
 }
 
-#prev-song { left: 20px; }
-#play-pause { right: 90px; }
-#next-song { right: 20px; }
-
-#prev-song:hover, #play-pause:hover, #next-song:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px #ff55aa;
-}
-
-#prev-song img, #play-pause img, #next-song img {
-  width: 26px;
-  height: 26px;
-  border-radius: 12px;
-  border: none ;
-}
-/* ---------- BODY & BACKGROUND ---------- */
 body {
   margin: 0;
   background: radial-gradient(circle at 50% 50%, #111, #000 90%);
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
   color: white;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 /* ---------- PARTY LIGHTS ---------- */
@@ -75,11 +53,11 @@ body {
 
 /* ---------- CHARACTER ---------- */
 #character {
-  width: 120px; /* increase width */
+  width: 120px;
   height: 150px;
   background: linear-gradient(45deg, rgb(97, 255, 171), rgb(86, 222, 116));
   text-align: center;
-  line-height: 1.3; /* adjust for multiple lines */
+  line-height: 1.3;
   border-radius: 15px;
   position: relative;
   left: 0;
@@ -91,11 +69,10 @@ body {
   justify-content: center;
   color: #000;
   padding: 5px;
-  font-size: 15px; /* smaller font to fit text */
-  white-space: normal; /* allow wrapping */
-  word-break: break-word; /* break long words */
+  font-size: 15px;
+  white-space: normal;
+  word-break: break-word;
 }
-
 
 @keyframes pulseChar {
   0% { transform: scale(1) translateY(0); box-shadow: 0 0 20px orange, 0 0 50px yellow; }
@@ -135,10 +112,37 @@ body {
   100% { transform: scale(1); box-shadow: 0 0 10px #ff0055; }
 }
 
+/* ---------- BUTTONS ---------- */
+#prev-song, #next-song, #play-pause {
+  position: absolute;
+  bottom: 20px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #ff0055, #ff55aa);
+  box-shadow: 0 0 20px #ff0055;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 10;
+}
 
+#prev-song { left: 20px; }
+#play-pause { right: 90px; }
+#next-song { right: 20px; }
+
+#prev-song:hover, #play-pause:hover, #next-song:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ff55aa;
+}
+
+#prev-song img, #play-pause img, #next-song img {
+  width: 26px;
+  height: 26px;
+  border-radius: 12px;
+  border: none;
+}
 
 /* ---------- EXTRA EFFECTS ---------- */
-/* Optional: floating particles */
 .particle {
   position: absolute;
   width: 5px;
@@ -155,15 +159,6 @@ body {
   100% { transform: translateY(0) translateX(0); opacity: 0.7; }
 }
 
-/* SIDE NEON BARS */
-
-
-@keyframes glowBar {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-/* DISCO BALLS */
 .disco-ball {
   position: absolute;
   bottom: 100px;
@@ -182,7 +177,7 @@ body {
   from { transform: translateY(0); }
   to { transform: translateY(-60px); }
 }
-/* SIDE PARTICLES */
+
 .side-particles {
   position: absolute;
   top: 0;
@@ -224,11 +219,50 @@ body {
   0% { transform: translateY(-100px); opacity: 1; }
   100% { transform: translateY(100vh); opacity: 0; }
 }
+
 img, video {
   max-width: 100%;
   height: auto;
 }
-* {
-  box-sizing: border-box;
-}
 
+/* ---------- RESPONSIVE MEDIA QUERY ---------- */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  #stage {
+    width: 90%;
+    height: auto;
+    top: 50%;                /* center vertically */
+    bottom: auto;             /* remove previous bottom */
+    transform: translate(-50%, -50%);  /* center horizontally and vertically */
+  }
+
+  #character {
+    width: 80px;
+    height: 100px;
+    font-size: 12px;
+  }
+
+  #drums {
+    gap: 15px;
+    bottom: 15px;            /* keep drums near bottom */
+  }
+
+  #prev-song, #next-song, #play-pause {
+    padding: 10px;
+    bottom: 15px;
+  }
+
+  #play-pause { right: 70px; }
+  #next-song { right: 15px; }
+  #prev-song { left: 15px; }
+
+  .disco-ball {
+    width: 50px;
+    height: 50px;
+    bottom: 80px;
+  }
+}
