@@ -1,0 +1,227 @@
+#prev-song, #next-song, #play-pause {
+  position: absolute;
+  bottom: 20px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #ff0055, #ff55aa);
+  box-shadow: 0 0 20px #ff0055;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 10;
+}
+
+#prev-song { left: 20px; }
+#play-pause { right: 90px; }
+#next-song { right: 20px; }
+
+#prev-song:hover, #play-pause:hover, #next-song:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ff55aa;
+}
+
+#prev-song img, #play-pause img, #next-song img {
+  width: 26px;
+  height: 26px;
+  border-radius: 12px;
+  border: none ;
+}
+/* ---------- BODY & BACKGROUND ---------- */
+body {
+  margin: 0;
+  background: radial-gradient(circle at 50% 50%, #111, #000 90%);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+}
+
+/* ---------- PARTY LIGHTS ---------- */
+#party-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(45deg, #ff0055, #ff55aa, #00ffff, #00ff55, #ffaa00);
+  background-size: 600% 600%;
+  animation: lights 6s linear infinite;
+  animation-play-state: paused;
+  box-shadow: 0 0 50px #fff;
+  border-bottom: 2px solid white;
+}
+
+@keyframes lights {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- STAGE ---------- */
+#stage {
+  position: absolute;
+  bottom: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 220px;
+  background: #252525;
+  border-radius: 15px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(255,255,255,0.1);
+}
+
+/* ---------- CHARACTER ---------- */
+#character {
+  width: 120px; /* increase width */
+  height: 150px;
+  background: linear-gradient(45deg, rgb(97, 255, 171), rgb(86, 222, 116));
+  text-align: center;
+  line-height: 1.3; /* adjust for multiple lines */
+  border-radius: 15px;
+  position: relative;
+  left: 0;
+  transition: transform 0.3s linear, box-shadow 0.2s ease;
+  box-shadow: 0 0 30px orange, 0 0 60px yellow;
+  animation: pulseChar 1s infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  padding: 5px;
+  font-size: 15px; /* smaller font to fit text */
+  white-space: normal; /* allow wrapping */
+  word-break: break-word; /* break long words */
+}
+
+
+@keyframes pulseChar {
+  0% { transform: scale(1) translateY(0); box-shadow: 0 0 20px orange, 0 0 50px yellow; }
+  50% { transform: scale(1.05) translateY(-2px); box-shadow: 0 0 30px orange, 0 0 70px yellow; }
+  100% { transform: scale(1) translateY(0); box-shadow: 0 0 20px orange, 0 0 50px yellow; }
+}
+
+/* ---------- DRUMS ---------- */
+#drums {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 25px;
+}
+
+.drum {
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #ff0055, #ff55aa);
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ff55aa, 0 0 40px #ff0055 inset;
+}
+
+@keyframes vibrate {
+  0% { transform: translate(0,0) rotate(0deg); }
+  25% { transform: translate(2px,-2px) rotate(-5deg); }
+  50% { transform: translate(-2px,2px) rotate(5deg); }
+  75% { transform: translate(1px,-1px) rotate(-2deg); }
+  100% { transform: translate(0,0) rotate(0deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px #ff0055; }
+  50% { transform: scale(1.2); box-shadow: 0 0 25px #ff55aa; }
+  100% { transform: scale(1); box-shadow: 0 0 10px #ff0055; }
+}
+
+
+
+/* ---------- EXTRA EFFECTS ---------- */
+/* Optional: floating particles */
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: float 5s infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); opacity: 0.7; }
+  50% { transform: translateY(-200px) translateX(50px); opacity: 0.3; }
+  100% { transform: translateY(0) translateX(0); opacity: 0.7; }
+}
+
+/* SIDE NEON BARS */
+
+
+@keyframes glowBar {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* DISCO BALLS */
+.disco-ball {
+  position: absolute;
+  bottom: 100px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, #aaa);
+  box-shadow: 0 0 25px #fff, 0 0 60px #ff55aa;
+  animation: floatDisco 6s ease-in-out infinite alternate;
+}
+
+.disco-ball.left { left: 60px; }
+.disco-ball.right { right: 60px; }
+
+@keyframes floatDisco {
+  from { transform: translateY(0); }
+  to { transform: translateY(-60px); }
+}
+/* SIDE PARTICLES */
+.side-particles {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.side-particles.left { left: 0; }
+.side-particles.right { right: 0; }
+
+.side-particles::before, .side-particles::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 
+    10px 40px #ff55aa,
+    30px 100px #00ffff,
+    15px 180px #ffaa00,
+    50px 260px #fff,
+    20px 340px #00ff55,
+    70px 420px #ff0055,
+    40px 500px #00aaff,
+    25px 580px #ffcc00,
+    60px 660px #ff77ff,
+    15px 740px #00ffaa;
+  animation: fall 8s linear infinite;
+}
+
+.side-particles::after {
+  animation-delay: 4s;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-100px); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
